@@ -1,0 +1,39 @@
+body { margin: 0; padding: 0; }
+
+ html,body{ height: 100vh; }
+
+a { text-decoration: none; }
+
+.header { background-color: #1f395f; color: #fff; }
+.header .header-child1 { position: relative; height: 40px; }
+.header .header-child1 .img_logo { position: absolute; display: block; top: 8px; left: 6px; height: 22px; }
+.header .header-child1 .header-child1-biaoti { position: absolute; display: block; top: 6px; left: 50%; margin-left: -110px; line-height: 30px; font-size: 30px; }
+.header .header-child1 .monitor { position: absolute; top: 6px; right: 7px; line-height: 30px; font-size: 30px; }
+
+.header .row { margin: 0; }
+.header .row .col-xs-4 { text-align: center; font-size: 17px; padding: 1px; line-height: 20px; }
+.mychart01,.mychart02,.mychart03 { border: 1px solid #fff; min-height: 200px; }
+
+.content { position: relative; }
+.content .tab { width: 100%; height:65vh; border-collapse: collapse; box-sizing: border-box; }
+.content .tab tbody tr td { border: 1px solid #fff; text-align: center; width: 80px; font-size: 19px; max-height:10%;}
+
+.changeColor,.changeModel,.fault { background-color: red; color: #fff; }
+
+.Z,.S,.R,.L,.W,.N { background-color: #00b050; }
+.Z,.S,.R,.L,.W { font-weight: bold; }
+
+.downtime { background-color: #bfbfbf; }
+
+.bottom { height: 23px; }
+.bottom span { float: left; display: block; margin: 4px 8px 0 4px; line-height: 16px; }
+
+.one { position: absolute; float: left; height: 30px; right: 0; bottom: 7px; }
+.one span { line-height: 16px; float: left; display: block; margin: 8px 6px 0 0; }
+.one a { width: 40px; height: 25px; display: block; float: left; margin: 3px 9px 0 0; cursor: default; }
+.one a:nth-of-type(1) { background-color: #00b050; }
+.one a:nth-of-type(2) { background-color: #c9091e; }
+.one a:nth-of-type(3) { background-color: #bfbfbf; margin-right: 50px; }
+.one a:nth-of-type(4) { background: url(../img/fault-1.png) center no-repeat; }
+.one a:nth-of-type(5) { background: url(../img/replace_color-1.png) center no-repeat; }
+.one a:nth-of-type(6) { background: url(../img/replace_mould-1.png) center no-repeat; }

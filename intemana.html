@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>综合管理看板</title>
+		<link rel="stylesheet" type="text/css" href="css/intemana.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="js/echarts.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div id="app">
+			<div class="header" id="header">
+				<div class="header-child1">
+					<div class="img_logo"><img src="img/logo-3.png"></div>
+					<div class="header-child1-biaoti">
+						综 合 管 理 看 板
+					</div>
+					<div class="monitor">{{nowTime}}</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">综合开机率:95%</div>
+					<div class="col-xs-4" style="text-align: left;">综合出模率:98%</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="mychart01" id="container_01"></div>
+					</div>
+					<div class="col-xs-4">
+						<div class="mychart02" id="container_02"></div>
+					</div>
+					<div class="col-xs-4">
+						<div class="mychart03" id="container_03"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<table class="tab">
+					<tbody id="tbody">
+						<tr v-for="Models in integrateLists">
+
+							<td v-for="Model in Models" v-bind:class="{fault:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==1&&Model.machineStatus==0">{{ Model.machineNum }}<img
+								 src="img/fault.png"></td>
+							<td v-for="Model in Models" v-bind:class="{changeColor:getbackgroundColor(Model.status,Model.machineStatus)}"
+							 v-if="Model.status==1&&Model.machineStatus==1">{{ Model.machineNum }}<img src="img/replace_color.png"></im>
+							</td>
+							<td v-for="Model in Models" v-bind:class="{changeModel:getbackgroundColor(Model.status,Model.machineStatus)}"
+							 v-if="Model.status==1&&Model.machineStatus==2">{{ Model.machineNum }}<img src="img/replace_mould.png"></td>
+							<td v-for="Model in Models" v-bind:class="{downtime:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==0">{{ Model.machineNum }}</td>
+							<td v-for="Model in Models" v-bind:class="{Z:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==0">{{ Model.machineNum }}<img
+								 src="img/Z.png"></td>
+							<td v-for="Model in Models" v-bind:class="{S:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==1">{{ Model.machineNum }}<img
+								 src="img/S.png"></td>
+							<td v-for="Model in Models" v-bind:class="{L:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==2">{{ Model.machineNum }}<img
+								 src="img/L.png"></td>
+							<td v-for="Model in Models" v-bind:class="{R:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==3">{{ Model.machineNum }}<img
+								 src="img/R.png"></td>
+							<td v-for="Model in Models" v-bind:class="{W:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==4">{{ Model.machineNum }}<img
+								 src="img/W.png"></td>
+							<td v-for="Model in Models" v-bind:class="{N:getbackgroundColor(Model.status,Model.machineStatus)}" v-if="Model.status==2&&Model.machineStatus==5">{{ Model.machineNum }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="one">
+					<span>生产</span><a href="#"></a>
+					<span>停机</span><a href="#"></a>
+					<span>待机</span><a href="#"></a>
+					<span>故障</span><a href="#"></a>
+					<span>换色</span><a href="#"></a>
+					<span>换模</span><a href="#"></a>
+				</div>
+			</div>
+			<div class="bottom">
+				<span>Z-成型周期异常</span>
+				<span>S-射胶时长异常</span>
+				<span>R-熔胶时长异常</span>
+				<span>L-冷却时长异常</span>
+				<span>W-射胶终点位置异常</span>
+			</div>
+		</div>
+		<script src="js/graphics.js"></script>
+		<script type="text/javascript" src="js/zonghekb.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/socket.io.js"></script>
+	</body>
+</html>
